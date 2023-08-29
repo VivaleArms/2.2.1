@@ -17,10 +17,10 @@ public class MainApp {
 
       CarService carService = context.getBean(CarService.class);
 
-      carService.add(new Car("car1", 10));
-      carService.add(new Car("car2", 20));
-      carService.add(new Car("car3", 30));
-      carService.add(new Car("car4", 40));
+      carService.add(new Car("car1", 11));
+      carService.add(new Car("car2", 22));
+      carService.add(new Car("car3", 33));
+      carService.add(new Car("car4", 44));
 
       List<Car> cars = carService.listCars();
 
@@ -40,7 +40,7 @@ public class MainApp {
          System.out.println("Car = " + user.getUserCar());
       }
 
-      User owner = userService.getUserByCar("car3", 30);
+      User owner = userService.getUserByCar("car3", 33);
       System.out.println(owner);
 
       context.close();

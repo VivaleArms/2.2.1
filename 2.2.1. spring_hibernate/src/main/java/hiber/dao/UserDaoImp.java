@@ -35,15 +35,12 @@ public class UserDaoImp implements UserDao {
 
         Car car = carQuery.getSingleResult();
 
-        if (car != null) {
-            List<User> userList = listUsers();
-            User getUser = userList.stream()
-                    .filter(user -> user.getUserCar().equals(car))
-                    .findAny()
-                    .orElse(null);
-            return getUser;
-        }
-        return null;
+        List<User> userList = listUsers();
+        User getUser = userList.stream()
+                .filter(user -> user.getUserCar().equals(car))
+                .findAny()
+                .orElse(null);
+        return getUser;
     }
 
 }
