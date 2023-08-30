@@ -40,8 +40,7 @@ public class MainApp {
          System.out.println("Car = " + user.getUserCar());
       }
 
-      User owner = userService.getUserByCar("car3", 33);
-      System.out.println(owner);
+         System.out.println(userService.getUserByCar("car3", 33));
 
       context.close();
    }

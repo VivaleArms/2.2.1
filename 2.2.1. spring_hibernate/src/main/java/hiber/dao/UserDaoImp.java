@@ -1,6 +1,5 @@
 package hiber.dao;
 
-import hiber.model.Car;
 import hiber.model.User;
 import jakarta.persistence.TypedQuery;
 import org.hibernate.SessionFactory;
@@ -29,18 +28,10 @@ public class UserDaoImp implements UserDao {
 
     @Override
     public User getUserByCar(String carModel, int carSeries) {
-        TypedQuery<Car> carQuery = sessionFactory.getCurrentSession().createQuery("from Car where model = :car_model and series = :car_series")
+        TypedQuery<User> owner = sessionFactory.getCurrentSession().createQuery("SELECT u FROM User u WHERE u.userCar.model=:car_model and u.userCar.series= :car_series", User.class)
                 .setParameter("car_model", carModel)
                 .setParameter("car_series", carSeries);
-
-        Car car = carQuery.getSingleResult();
-
-        List<User> userList = listUsers();
-        User getUser = userList.stream()
-                .filter(user -> user.getUserCar().equals(car))
-                .findAny()
-                .orElse(null);
-        return getUser;
+        return owner.getSingleResult();
     }
 
 }

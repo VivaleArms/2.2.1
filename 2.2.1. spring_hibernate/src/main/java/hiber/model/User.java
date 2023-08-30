@@ -1,6 +1,7 @@
 package hiber.model;
 
 import jakarta.persistence.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 @Table(name = "users")
